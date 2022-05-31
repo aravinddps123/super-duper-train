@@ -10,7 +10,7 @@ class Test(SimpleTestCase):
     
     def test_add_number(self):
         """Test the adding the number totgether"""
-        res = calc.add(5,6)
+        res = calc.add(5, 6)
         self.assertEqual(res, 11)
 
     
