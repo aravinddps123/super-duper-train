@@ -1,12 +1,12 @@
 """sample_ tests for application"""
 
 from django.test import SimpleTestCase
-
 from app import calc
+
 
 class Test(SimpleTestCase):
     """Test the calc module"""
-
+    
     
     def test_add_number(self):
         """Test the adding the number totgether"""
