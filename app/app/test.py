@@ -12,12 +12,7 @@ class Test(SimpleTestCase):
         res = calc.add(5, 6)
         self.assertEqual(res, 11)
 
-    
     def test_subtract_number(self):
         """Test the subtract the number totgether"""
         res = calc.subtract(10, 16)
         self.assertEqual(res, 6)
-
-
-
-
