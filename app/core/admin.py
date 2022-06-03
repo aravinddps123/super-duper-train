@@ -1,4 +1,4 @@
-"""  
+"""
 Django admin customizations
 """
 
