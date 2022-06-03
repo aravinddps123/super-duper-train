@@ -51,7 +51,7 @@ class PublicUserApiTests(TestCase):
         self.assertEqual(res.status_code, status.HTTP_400_BAD_REQUEST)
 
     def test_password_too_short_error(self):
-        """Test ana error  is retuned if password less than 5 chars"""
+        """Test an error  is retuned if password less than 5 chars"""
         payload = {
             'email': 'test@example.com',
             'password': 'pw',
@@ -68,11 +68,12 @@ class PublicUserApiTests(TestCase):
     def test_create_token_user_for_user(self):
         
         user_details = {
+        'email': 'test@example.com',
+        'password': 'test-user-password123',
         'name': 'Test Name',
-        'email': 'example1@gmail.com',
-        'password': 'Passtest123',
         }
-        create_user(**user_details)
+        #create_user(**user_details)
+        res = self.client.post(CREATE_USER_URL, user_details)
 
         payload = {
         'email': user_details['email'],
