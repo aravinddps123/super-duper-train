@@ -12,7 +12,7 @@ from recipe import views
 
 router = DefaultRouter()
 
-router.register('recipes', views.RecipeViewSet)
+router.register('recipe', views.RecipeViewSet)
 
 app_name = 'recipe'
 
