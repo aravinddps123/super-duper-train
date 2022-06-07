@@ -9,7 +9,8 @@ from core import models
 
 def create_user(email='user@example.com', password='testpass123'):
     """Create a new user and return"""
-    return get_user_model().objects.create(email, password)
+    return get_user_model().objects.create_user(email, password)
+
 
 class ModelsTests(TestCase):
     """Test Models """
@@ -69,3 +70,17 @@ class ModelsTests(TestCase):
         )
 
         self.assertEqual(str(recipe), recipe.title)
+
+    def test_create_tag(self):
+        """test creating a tag is successful or not"""
+        user = create_user()
+        tag = models.Tag.objects.create(user=user, tag_name='Tag1')
+
+        self.assertEqual(str(tag), tag.name)
+
+    def test_create_tag(self):
+        """Test creating a tag is successful or not"""
+        user = create_user()
+        tag = models.Tag.objects.create(user=user, name='Tag1')
+
+        self.assertEqual(str(tag), tag.name)
