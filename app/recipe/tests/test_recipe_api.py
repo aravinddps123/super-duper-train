@@ -183,16 +183,16 @@ class PrivateRecipeApiTests(TestCase):
 
     def test_update_user_returns_error(self):
         """Test changing the recipe user results in an error"""
-        new_user = create_user(email = 'user2@example.com', password = 'password2321')
-        recipe = create_recipe(user =self.user)
+        new_user = create_user(email='user2@example.com',
+                               password='password2321')
+        recipe = create_recipe(user=self.user)
 
-        payload = {'user' : new_user.id}
+        payload = {'user': new_user.id}
         url = detail_url(recipe.id)
         self.client.patch(url, payload)
 
         recipe.refresh_from_db()
         self.assertEqual(recipe.user, self.user)
-
 
     def test_delete_recipe(self):
         """Test deleteing a recipe successful or not"""
@@ -206,7 +206,7 @@ class PrivateRecipeApiTests(TestCase):
 
     def test_recipe_other_user(self):
         """Test deleting a recipe other user gives an error"""
-        new_user = create_user(email = 'user2@example.com', password = 'test123')
+        new_user = create_user(email='user2@example.com', password='test123')
         recipe = create_recipe(user=new_user)
 
         url = detail_url(recipe.id)
@@ -214,6 +214,3 @@ class PrivateRecipeApiTests(TestCase):
 
         self.assertEqual(res.status_code, status.HTTP_404_NOT_FOUND)
         self.assertTrue(Recipe.objects.filter(id=recipe.id).exists())
-        
-
-
