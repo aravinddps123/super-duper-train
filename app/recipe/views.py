@@ -12,7 +12,7 @@ from recipe import serializers
 
 class RecipeViewSet(viewsets.ModelViewSet):
     """View for manage recipe API."""
-    #Detail serializer is important seraializer
+    # Detail serializer is important seraializer
     serializer_class = serializers.RecipeDetailSerializer
     queryset = Recipe.objects.all()
     authentication_classes = [TokenAuthentication]
@@ -29,5 +29,6 @@ class RecipeViewSet(viewsets.ModelViewSet):
 
         return self.serializer_class
 
-
-
+    def perform_create(self, serializer):
+        """Create a new recipe"""
+        serializer.save(user=self.request.user)
